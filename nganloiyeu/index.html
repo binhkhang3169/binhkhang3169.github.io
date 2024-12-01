@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng sinh nhật thầy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #eef2f7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            overflow-wrap: break-word;
+            position: relative;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin: 20px 0 10px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #2c3e50;
+            margin: 0 0 20px;
+            line-height: 1.8;
+        }
+
+        .text-output {
+            font-size: 18px;
+            color: #555;
+            min-height: 40px;
+            white-space: pre-wrap;
+        }
+
+        .timestamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .timestamp i {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="text-output" class="text-output"></div>
+        <div class="timestamp">
+            <i class="fas fa-pen"></i> 1/12/2024
+        </div>
+    </div>
+    <script>
+        // Nội dung lời chúc mừng sinh nhật thầy giáo
+        const content = [
+            { type: "h2", text: "Kính gửi thầy!" },
+            { type: "p", text: "Hôm nay là một ngày vô cùng đặc biệt, ngày mà con muốn gửi đến thầy những lời chúc chân thành và sâu sắc nhất nhân dịp sinh nhật của thầy." },
+            { type: "p", text: "Dưới ánh sáng tri thức mà thầy đã truyền dạy, con không chỉ học được những kiến thức quý báu mà còn nhận ra giá trị của sự kiên nhẫn và niềm đam mê với việc học." },
+            { type: "p", text: "Thầy không chỉ là một người dẫn đường con trong việc học mà còn là một người bạn đồng hành trong cuộc sống của con. Những lời khuyên và sự chỉ dẫn của thầy giúp con học được nhiều điều về ý nghĩa, cũng như nhận thức rõ hơn về cuộc sống." },
+            { type: "p", text: "Nhân dịp sinh nhật, con chúc thầy luôn dồi dào sức khỏe, tràn đầy năng lượng để tiếp tục sự nghiệp trồng người cao quý. Chúc thầy luôn gặp nhiều niềm vui, hạnh phúc và những thành công mới trong cuộc sống." },
+            { type: "p", text: "Hy vọng rằng thầy sẽ luôn giữ vững tinh thần lạc quan và tình yêu dành cho nghề dạy học – một nghề cao cả và đáng tự hào." },
+            { type: "p", text: "Con biết rằng mọi lời nói đều không thể diễn tả hết sự kính trọng và biết ơn mà con dành cho thầy. Nhưng xin thầy hãy luôn nhớ rằng, ở đâu đó, luôn có những học trò nhỏ bé như con mãi yêu quý và trân trọng thầy." },
+            { type: "p", text: "Một lần nữa, chúc thầy có một ngày sinh nhật thật ý nghĩa và tràn ngập niềm vui. Con mãi mãi biết ơn và kính chúc thầy thành công trên con đường mà thầy đã chọn!" },
+			{type:"h3",text:"Học trò của thầy"},
+			{type:"p",text:"Trần Bình Khang"}
+        ];
+
+        const textOutput = document.getElementById("text-output");
+
+        let index = 0;
+        let currentText = "";
+        let charIndex = 0;
+
+        function displayText() {
+            if (index < content.length) {
+                if (charIndex === 0) {
+                    // Thêm thẻ HTML vào text-output
+                    const element = document.createElement(content[index].type);
+                    element.id = `text-item-${index}`;
+                    textOutput.appendChild(element);
+                }
+
+                // Lấy phần tử hiện tại và thêm từng ký tự
+                const currentElement = document.getElementById(`text-item-${index}`);
+                currentText = content[index].text;
+
+                if (charIndex < currentText.length) {
+                    currentElement.innerHTML += currentText[charIndex];
+                    charIndex++;
+                    setTimeout(displayText, 35); // Tốc độ: 50ms mỗi chữ
+                } else {
+                    index++;
+                    charIndex = 0;
+                    setTimeout(displayText, 500); // Chờ 500ms trước khi chuyển sang phần tiếp theo
+                }
+            }
+        }
+
+        // Bắt đầu hiển thị ngay khi tải trang
+        window.onload = displayText;
+    </script>
+</body>
+</html>
