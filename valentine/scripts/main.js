@@ -6,7 +6,7 @@
   const PARTICLE_NUM = 2000
   const RADIUS = Math.PI * 2
   const CANVASWIDTH = 500
-  const CANVASHEIGHT = 150
+  const CANVASHEIGHT = 500
   const CANVASID = 'canvas'
 
   let texts = ['MY DEAR', 'LOOK UP' ,'STARRY SKY', 'ARE YOU', 'LOOKING AT', 'SAME STAR', 'WITH ME ?', 'HAPPY', 'VALENTINE\'S', 'DAY', 'I MISS YOU','KimTrang']
